@@ -7,6 +7,6 @@
         {!!Form::text('email',null,['class'=>'form-control', 'placeholder'=>'Add email'])!!}
     </div>
     <div class="form-group">
-        {!!Form::label('PassWord:')!!}
-        {!!Form::password('password',['class'=>'form-control'])!!}
+        {!!Form::label('Password:')!!}
+        {!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Add Password'])!!}
     </div>

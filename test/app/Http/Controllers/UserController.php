@@ -42,7 +42,7 @@ class UserController extends Controller {
 			'email' => $request['email'],
 			'password' => $request['password'],
 			]);
-		return Redirect('/user')->with('message','store');
+		return Redirect('/user')->with('message','User create sucess');
 	}
 
 	/**
@@ -92,7 +92,10 @@ class UserController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+		Session::flash('message', 'User delete sucess');
+		return Redirect::to('/user');
+
 	}
 
 }
