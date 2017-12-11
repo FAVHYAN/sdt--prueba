@@ -1,11 +1,14 @@
 <?php namespace Cinema\Http\Controllers;
 
+use Cinema\Theater;
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
-
+use Session;
+use Redirect;
 use Illuminate\Http\Request;
 
-class theaterController extends Controller {
+
+class TheaterController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +17,10 @@ class theaterController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$theaters=Theater::All();
+		return view('theater.index',compact('theaters'));
+
+
 	}
 
 	/**
@@ -24,7 +30,7 @@ class theaterController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('theater.create');
 	}
 
 	/**
@@ -32,9 +38,14 @@ class theaterController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		 Theater::create([
+			'name' => $request['name'],
+			'location' => $request['location'],
+			'genre' => $request['genre'],
+			]);
+		return Redirect('/theater')->with('message','Theater create sucess');
 	}
 
 	/**
@@ -56,7 +67,8 @@ class theaterController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$theater = Theater::find($id);
+		return view('theater.edit',['theater'=>$theater]);
 	}
 
 	/**
@@ -65,9 +77,13 @@ class theaterController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$theater = Theater::find($id);
+		$theater->fill($request->all());
+		$theater->save();
+		Session::flash('message', 'theater update sucess');
+		return Redirect::to('/theater');
 	}
 
 	/**
@@ -78,7 +94,11 @@ class theaterController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Theater::destroy($id);
+		Session::flash('message', 'theater delete sucess');
+		return Redirect::to('/theater');
+
 	}
+
 
 }

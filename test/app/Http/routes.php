@@ -20,6 +20,7 @@ Route::get('admin','FrontController@admin');
 
 Route::resource('user', 'UserController');
 Route::resource('movie', 'MovieController');
+Route::resource('theater', 'TheaterController');
 
 // Route::get('/', 'WelcomeController@index');
 

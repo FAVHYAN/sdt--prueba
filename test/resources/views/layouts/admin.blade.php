@@ -79,10 +79,10 @@
                             <a href="#"><i class="fa fa-child fa-fw"></i> Theater<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Add</a>
+                                    <a href="{!!URL::to('/theater/create')!!}"><i class='fa fa-plus fa-fw'></i> Add</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class='fa fa-list-ol fa-fw'></i> Theaters</a>
+                                    <a href="{!!URL::to('/theater')!!}"><i class='fa fa-list-ol fa-fw'></i> Theaters</a>
                                 </li>
                             </ul>
                         </li>
