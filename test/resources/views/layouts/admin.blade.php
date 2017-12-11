@@ -56,10 +56,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Add</a>
+                                    <a href="/user/create"><i class='fa fa-plus fa-fw'></i> Add</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class='fa fa-list-ol fa-fw'></i> Users</a>
+                                    <a href="/user"><i class='fa fa-list-ol fa-fw'></i> Users</a>
                                 </li>
                             </ul>
                         </li>
