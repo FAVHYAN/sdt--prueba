@@ -1,6 +1,6 @@
 @extends('Layouts.admin')
-@section('content')
-  
+@section('content')  
+	@include('alerts.request')
   {!!Form::model($theater,['route'=>['theater.update', $theater->id], 'method' => 'PUT'])!!} 
             @include('theater.forms.thr')  
         {!!Form::submit('Update',['class'=>'btn btn-primary'])!!}

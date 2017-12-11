@@ -1,6 +1,8 @@
 <?php namespace Cinema\Http\Controllers;
 
 use Cinema\Http\Requests;
+use Cinema\Http\Requests\MovieCreateRequest;
+use Cinema\Http\Requests\MovieupdateRequest;
 use Cinema\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -35,7 +37,7 @@ class MovieController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(MovieCreateRequest $request)
 	{
 		 Movie::create([
 			'name' => $request['name'],
@@ -43,8 +45,6 @@ class MovieController extends Controller {
 			'direction' => $request['direction'],
 			'genre' => $request['genre'],
 			'duration' => $request['duration'],
-			'created_at' => $request['created_at'],
-			'updated_at' => $request['updated_at'],
 			]);
 		return Redirect('/movie')->with('message','Movie create sucess');
 	}
@@ -78,7 +78,7 @@ class MovieController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Request $request)
+	public function update($id, MovieupdateRequest $request)
 	{
 		$movie = Movie::find($id);
 		$movie->fill($request->all());

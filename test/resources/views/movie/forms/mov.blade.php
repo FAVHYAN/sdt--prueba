@@ -18,11 +18,3 @@
         {!!Form::label('duration:')!!}
         {!!Form::text('duration',null,['class'=>'form-control', 'placeholder'=>'Add duration'])!!}
     </div>
-    <div class="form-group">
-        {!!Form::label('created_at:')!!}
-        {!!Form::text('created_at',null,['class'=>'form-control', 'placeholder'=>'Add created at'])!!}
-    </div>
-    <div class="form-group">
-        {!!Form::label('updated_at:')!!}
-        {!!Form::text('updated_at',null,['class'=>'form-control', 'placeholder'=>'Add updated at'])!!}
-    </div>

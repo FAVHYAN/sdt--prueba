@@ -2,6 +2,8 @@
 
 use Cinema\Theater;
 use Cinema\Http\Requests;
+use Cinema\Http\Requests\TheaterCreateRequest;
+use Cinema\Http\Requests\TheaterupdateRequest;
 use Cinema\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -38,7 +40,7 @@ class TheaterController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(TheaterCreateRequest $request)
 	{
 		 Theater::create([
 			'name' => $request['name'],
@@ -77,7 +79,7 @@ class TheaterController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Request $request)
+	public function update($id, TheaterupdateRequest $request)
 	{
 		$theater = Theater::find($id);
 		$theater->fill($request->all());

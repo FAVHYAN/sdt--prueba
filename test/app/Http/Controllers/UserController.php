@@ -1,6 +1,8 @@
 <?php namespace Cinema\Http\Controllers;
 
 use Cinema\Http\Requests;
+use Cinema\Http\Requests\UserCreateRequest;
+use Cinema\Http\Requests\UserupdateRequest;
 use Cinema\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -35,7 +37,7 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(UserCreateRequest $request)
 	{
 		 User::create([
 			'name' => $request['name'],
@@ -74,7 +76,7 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Request $request)
+	public function update($id, UserUpdateRequest $request)
 	{
 		$user = User::find($id);
 		$user->fill($request->all());
