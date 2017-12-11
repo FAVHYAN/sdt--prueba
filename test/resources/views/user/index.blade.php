@@ -1,10 +1,7 @@
 @extends('Layouts.admin')
-
-<?php $message = Session::get('message') ?>
-
-@if($message == 'store')
+@if(Session::has('message'))
 <div class="alert alert-Success" role="alert">
-  <strong>User success create </strong>.
+  <strong>{{Session::get('message')}}</strong>.
 </div>
 @endif
 
@@ -19,7 +16,7 @@
 		<tbody>
 			<td>{{$user ->name}}</td>
 			<td>{{$user ->email}}</td>
-			<td></td>			
+			<td>{!!link_to_route('user.edit', $title = 'Edit', $parameters = $user->id, $attributes = ['class'=>'btn btn-primary']);!!}</td>			
 		</tbody>
 		@endforeach
 	</table>

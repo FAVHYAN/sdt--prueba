@@ -2,7 +2,9 @@
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
-
+use Session;
+use Redirect;
+use Cinema\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -14,7 +16,7 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{	
-		$users= \Cinema\User::All();
+		$users=  User::All();
 		return view('user.index',compact('users'));
 	}
 
@@ -35,12 +37,12 @@ class UserController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		\Cinema\User::create([
+		 User::create([
 			'name' => $request['name'],
 			'email' => $request['email'],
-			'password' => bcrypt($request['password']),
+			'password' => $request['password'],
 			]);
-		return redirect('/user')->with('message','store');
+		return Redirect('/user')->with('message','store');
 	}
 
 	/**
@@ -62,7 +64,8 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = user::find($id);
+		return view('user.edit',['user'=>$user]);
 	}
 
 	/**
@@ -71,9 +74,14 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$user = User::find($id);
+		$user->fill($request->all());
+		$user->save();
+		Session::flash('message', 'User update sucess');
+		return Redirect::to('/user');
+
 	}
 
 	/**
