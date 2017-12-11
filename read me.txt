@@ -1,0 +1,17 @@
+Prueba de desarrollo:
+
+La siguiente prueba de desarrollo tiene como objetivo evaluar las habilidades del programador en relación con su código.
+
+Se desea crear una aplicación web similar a un cine, donde se les permita a los usuarios visualizar cuales películas se están presentando en las diferentes sedes del teatro.
+
+Objetivos:
+Hacer un CRUD donde se almacene la información de las películas, nombre, fecha de lanzamiento, e idioma.
+Hacer un CRUD donde se almacene la información de los teatros, nombre del teatro, ubicación, y películas que se presentan.
+Hacer una vista de usuario donde se puedan ver las películas que se presentan en cada teatro.
+Reglas:
+Se debe usar como backend PHP con Laravel, junto con MySQL para persistir la información.
+Deseable:
+La comunicación entre backend y frontend sea por medio de API REST
+Usar SASS como preprocesador de css
+Usar react.js o angular del lado del frontend
+Código en ingles
