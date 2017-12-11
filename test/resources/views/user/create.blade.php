@@ -1,22 +1,24 @@
 @extends('Layouts.admin')
 @section('content')
-     
+  
+  {!!Form::open(['route'=>'user.store', 'method' => 'POST'])!!} 
+    <div class="form-group">
+        {!!Form::label('Name:')!!}
+        {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Add user'])!!}
+    </div> 
+    <div class="form-group">
+        {!!Form::label('Email:')!!}
+        {!!Form::text('email',null,['class'=>'form-control', 'placeholder'=>'Add email'])!!}
+    </div>
+    <div class="form-group">
+        {!!Form::label('PassWord:')!!}
+        {!!Form::password('password',['class'=>'form-control'])!!}
+    </div>
 
-<form action="">
-    <div class="form-group">
-        <label for="">Name: </label>
-        <input type="text" name="form-control">
-    </div>
-    <div class="form-group">
-        <label for="">Email: </label>
-        <input type="text" name="form-control">
-    </div>
-    <div class="form-group">
-        <label for="">Password: </label>
-        <input type="password" name="form-control">
-    </div>
-    <button class="btn btn-primary">Register</button>
-</form>
-    <div class="clearfix"></div>
+        {!!Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
+
+  {!!Form::close()!!}  
+
+
 
 @stop

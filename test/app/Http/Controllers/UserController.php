@@ -32,9 +32,14 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		\Cinema\User::create([
+			'name' => $request['name'],
+			'email' => $request['email'],
+			'password' => bcrypt($request['password']),
+			]);
+		return "Success";
 	}
 
 	/**
