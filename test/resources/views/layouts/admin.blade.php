@@ -67,16 +67,16 @@
                             <a href="#"><i class="fa fa-film fa-fw"></i> Movie<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Add</a>
+                                    <a href="{!!URL::to('/movie/create')!!}"><i class='fa fa-plus fa-fw'></i> Add</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class='fa fa-list-ol fa-fw'></i> Movies</a>
+                                    <a href="{!!URL::to('/movie')!!}"><i class='fa fa-list-ol fa-fw'></i> Movies</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-child fa-fw"></i> Genre<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-child fa-fw"></i> Theater<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#"><i class='fa fa-plus fa-fw'></i> Add</a>

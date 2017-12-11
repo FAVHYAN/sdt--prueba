@@ -2,7 +2,9 @@
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
-
+use Session;
+use Redirect;
+use Cinema\Movie;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller {
@@ -14,7 +16,8 @@ class MovieController extends Controller {
 	 */
 	public function index()
 	{
-			return "index";
+		$movie=  Movie::All();
+		return view('movie.index',compact('movie'));
 	}
 
 	/**
@@ -24,7 +27,7 @@ class MovieController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('movie.create');
 	}
 
 	/**
@@ -32,9 +35,18 @@ class MovieController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		 Movie::create([
+			'name' => $request['name'],
+			'cast' => $request['cast'],
+			'direction' => $request['direction'],
+			'genre' => $request['genre'],
+			'duration' => $request['duration'],
+			'created_at' => $request['created_at'],
+			'updated_at' => $request['updated_at'],
+			]);
+		return Redirect('/movie')->with('message','Movie create sucess');
 	}
 
 	/**
@@ -56,7 +68,8 @@ class MovieController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$movie = Movie::find($id);
+		return view('movie.edit',['movie'=>$movie]);
 	}
 
 	/**
@@ -65,9 +78,14 @@ class MovieController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$movie = Movie::find($id);
+		$movie->fill($request->all());
+		$movie->save();
+		Session::flash('message', 'movie update sucess');
+		return Redirect::to('/movie');
+
 	}
 
 	/**
@@ -78,7 +96,10 @@ class MovieController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Movie::destroy($id);
+		Session::flash('message', 'movie delete sucess');
+		return Redirect::to('/movie');
+
 	}
 
 }
