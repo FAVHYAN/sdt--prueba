@@ -19,7 +19,7 @@ class TheaterController extends Controller {
 	 */
 	public function index()
 	{
-		$theaters=Theater::All();
+		$theaters = Theater::paginate(10);
 		return view('theater.index',compact('theaters'));
 
 
@@ -96,7 +96,8 @@ class TheaterController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		Theater::destroy($id);
+		$theater = Theater::find($id);
+		$theater->delete();
 		Session::flash('message', 'theater delete sucess');
 		return Redirect::to('/theater');
 

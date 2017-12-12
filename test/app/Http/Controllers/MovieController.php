@@ -18,7 +18,7 @@ class MovieController extends Controller {
 	 */
 	public function index()
 	{
-		$movie=  Movie::All();
+		$movie = Movie::paginate(10);
 		return view('movie.index',compact('movie'));
 	}
 
@@ -96,7 +96,9 @@ class MovieController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		Movie::destroy($id);
+		
+		$movie = Movie::find($id);
+		$movie->delete();
 		Session::flash('message', 'movie delete sucess');
 		return Redirect::to('/movie');
 

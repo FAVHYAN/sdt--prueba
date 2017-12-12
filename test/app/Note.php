@@ -3,16 +3,12 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Theater extends Model {
+class Note extends Model {
 
-	
 	use SoftDeletes;
 
-	protected $table = "theaters";
-
+    protected $table = 'notes';
+    protected $fillable = ['name','description'];
     protected $dates = ['deleted_at'];
-
-	protected $fillable = ['name', 'location', 'genre'];
-
 
 }

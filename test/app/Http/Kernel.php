@@ -10,12 +10,13 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $middleware = [
-		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-		'Illuminate\Cookie\Middleware\EncryptCookies',
-		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-		'Illuminate\Session\Middleware\StartSession',
-		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'Cinema\Http\Middleware\VerifyCsrfToken',
+		Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+		Illuminate\Cookie\Middleware\EncryptCookies::class,
+		Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+		Illuminate\Session\Middleware\StartSession::class,
+		Illuminate\View\Middleware\ShareErrorsFromSession::class,
+		// Barryvdh\Cors\HandleCors::class,
+		// Cinema\Http\Middleware\VerifyCsrfToken::class,
 	];
 
 	/**
@@ -24,9 +25,9 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'Cinema\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'Cinema\Http\Middleware\RedirectIfAuthenticated',
+		'auth' => Cinema\Http\Middleware\Authenticate::class,
+		'auth.basic' => Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+		'guest' => Cinema\Http\Middleware\RedirectIfAuthenticated::class,
 	];
 
 }
