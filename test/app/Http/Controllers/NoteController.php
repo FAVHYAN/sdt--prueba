@@ -2,7 +2,7 @@
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
-
+use Cinema\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller {
@@ -37,10 +37,10 @@ class NoteController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		Note::create($request->all());
-		return response()->json(["mensaje"=>"creada correctamente"]);
+		return response()->json(["message"=>"Success"]);
 	}
 
 	/**
