@@ -2,7 +2,7 @@
 
 use Cinema\Http\Requests\Request;
 
-class UserUpdaterequest extends Request {
+class loginRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class UserUpdaterequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required',
-			'email' => 'required',
+			'email' => 'required|email',
+			'password' => 'required',
 		];
 	}
 

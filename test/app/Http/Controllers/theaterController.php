@@ -8,10 +8,19 @@ use Cinema\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+
 
 
 class TheaterController extends Controller {
 
+
+	public function __construct(){
+		$this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
+	}
+	public function find(Route $route){
+		$this->theater = Theater::find($route->getParameter('theater'));
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -69,8 +78,7 @@ class TheaterController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$theater = Theater::find($id);
-		return view('theater.edit',['theater'=>$theater]);
+		return view('theater.edit',['theater'=>$this->theater]);
 	}
 
 	/**
@@ -81,9 +89,8 @@ class TheaterController extends Controller {
 	 */
 	public function update($id, TheaterupdateRequest $request)
 	{
-		$theater = Theater::find($id);
-		$theater->fill($request->all());
-		$theater->save();
+		$this->theater->fill($request->all());
+		$this->theater->save();
 		Session::flash('message', 'theater update sucess');
 		return Redirect::to('/theater');
 	}
@@ -96,8 +103,7 @@ class TheaterController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$theater = Theater::find($id);
-		$theater->delete();
+		$this->theater->delete();
 		Session::flash('message', 'theater delete sucess');
 		return Redirect::to('/theater');
 

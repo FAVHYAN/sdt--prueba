@@ -22,6 +22,8 @@ Route::resource('user', 'UserController');
 Route::resource('movie', 'MovieController');
 Route::resource('theater', 'TheaterController');
 Route::resource('notes', 'NoteController');
+Route::resource('log', 'LogController');
+Route::get('logout','LogController@logout');
 
 // Route::get('/', 'WelcomeController@index');
 

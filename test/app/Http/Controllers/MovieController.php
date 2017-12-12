@@ -8,9 +8,17 @@ use Session;
 use Redirect;
 use Cinema\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class MovieController extends Controller {
 
+
+	public function __construct(){
+		$this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
+	}
+	public function find(Route $route){
+		$this->movie = Movie::find($route->getParameter('movie'));
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -18,8 +26,8 @@ class MovieController extends Controller {
 	 */
 	public function index()
 	{
-		$movie = Movie::paginate(10);
-		return view('movie.index',compact('movie'));
+		$movies = Movie::paginate(10);
+		return view('movie.index',compact('movies'));
 	}
 
 	/**
@@ -68,8 +76,7 @@ class MovieController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$movie = Movie::find($id);
-		return view('movie.edit',['movie'=>$movie]);
+		return view('movie.edit',['movie'=>$this->movie]);
 	}
 
 	/**
@@ -80,9 +87,8 @@ class MovieController extends Controller {
 	 */
 	public function update($id, MovieupdateRequest $request)
 	{
-		$movie = Movie::find($id);
-		$movie->fill($request->all());
-		$movie->save();
+		$this->movie->fill($request->all());
+		$this->movie->save();
 		Session::flash('message', 'movie update sucess');
 		return Redirect::to('/movie');
 
@@ -97,8 +103,7 @@ class MovieController extends Controller {
 	public function destroy($id)
 	{
 		
-		$movie = Movie::find($id);
-		$movie->delete();
+		$this->movie->delete();
 		Session::flash('message', 'movie delete sucess');
 		return Redirect::to('/movie');
 
