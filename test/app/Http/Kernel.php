@@ -24,9 +24,10 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => Cinema\Http\Middleware\Authenticate::class,
-		'auth.basic' => Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-		'guest' => Cinema\Http\Middleware\RedirectIfAuthenticated::class,
+		'auth' => 'Cinema\Http\Middleware\Authenticate',
+		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
+		'guest' => 'Cinema\Http\Middleware\RedirectIfAuthenticated',
+		'admin' => 'Cinema\Http\Middleware\Admin',
 	];
 
 }
