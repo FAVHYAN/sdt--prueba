@@ -21,9 +21,9 @@ angular.module('Client')
 		$scope.saveNote = function() {
 			NoteResource.save($scope.Note);
 			Materialize.toast('Note created.', 5000, 'green accent-4');
-			// $timeout(function() {
-			// 	$location.path('/notes/new');
-			// }, 1000);
+			$timeout(function() {
+				$location.path('/notes');
+			}, 1000);
 		};
 	})
 	.controller('EditNoteCtrl', function($scope, NoteResource, $location, $timeout, $routeParams) {

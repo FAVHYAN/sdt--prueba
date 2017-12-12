@@ -1,0 +1,24 @@
+<div class="card-panel contenedor z-depth-3">
+<h4 class="center-align">{{title}}</h4>
+	<form ng-submit="saveFilm()">
+		<div class="input-field">
+			<input placeholder="Name" type="text" ng-model="Film.name">
+		</div>
+		<div class="input-field">
+			<input placeholder="Cast" type="text" ng-model="Film.cast">
+		</div>
+		<div class="input-field">
+			<input placeholder="Direction" type="text" ng-model="Film.direction">
+		</div>
+		<div class="input-field">
+			<input placeholder="Genre" type="text" ng-model="Film.genre">
+		</div>
+		<div class="input-field">
+			<input placeholder="Duration" type="text" ng-model="Film.duration">
+		</div>
+
+		<button class="btn waves-effect blue darken-3" type="submit">
+				{{button}}
+		</button>
+	</form>
+</div>
